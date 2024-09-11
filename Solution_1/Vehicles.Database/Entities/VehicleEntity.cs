@@ -1,11 +1,12 @@
 ﻿namespace Vehicles.Database.Entities;
 
-[Table("Vehicle")]
+[Table("Vehicle")] //tábla neve
+[Index(nameof(LicencePlate), IsUnique = true)]
 
 public class VehicleEntity
 {
-    [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    [Key] //primary key
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)] //auto increment
     public uint Id { get; set; }
 
     [Required]

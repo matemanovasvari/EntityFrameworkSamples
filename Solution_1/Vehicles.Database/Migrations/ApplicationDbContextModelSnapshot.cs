@@ -21,6 +21,46 @@ namespace Vehicles.Database.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Vehicles.Database.Entities.ColorEntity", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasMaxLength(6)
+                        .HasColumnType("nvarchar(6)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(32)
+                        .HasColumnType("nvarchar(32)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Name", "Code")
+                        .IsUnique();
+
+                    b.ToTable("Color");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            Code = "ffffff",
+                            Name = "white"
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            Code = "000000",
+                            Name = "black"
+                        });
+                });
+
             modelBuilder.Entity("Vehicles.Database.Entities.VehicleEntity", b =>
                 {
                     b.Property<long>("Id")
@@ -33,6 +73,9 @@ namespace Vehicles.Database.Migrations
                         .IsRequired()
                         .HasMaxLength(17)
                         .HasColumnType("nvarchar(17)");
+
+                    b.Property<long>("ColorId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("EngineNumber")
                         .IsRequired()
@@ -55,10 +98,28 @@ namespace Vehicles.Database.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ColorId");
+
                     b.HasIndex("LicencePlate")
                         .IsUnique();
 
                     b.ToTable("Vehicle");
+                });
+
+            modelBuilder.Entity("Vehicles.Database.Entities.VehicleEntity", b =>
+                {
+                    b.HasOne("Vehicles.Database.Entities.ColorEntity", "Color")
+                        .WithMany("Vehicles")
+                        .HasForeignKey("ColorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Color");
+                });
+
+            modelBuilder.Entity("Vehicles.Database.Entities.ColorEntity", b =>
+                {
+                    b.Navigation("Vehicles");
                 });
 #pragma warning restore 612, 618
         }

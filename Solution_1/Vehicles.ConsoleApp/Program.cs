@@ -1,19 +1,39 @@
-﻿using Vehicles.Database;
-using Vehicles.Database.Entities;
+﻿using var dbContext = new ApplicationDbContext();
 
-using var dbContext = new ApplicationDbContext();
+//adat hozzáadása az adatbázishoz
+//var vehicle = new VehicleEntity
+//{
+//    ChassisNumber = "ioplghjklq2345tr5",
+//    EngineNumber = "df",
+//    LicencePlate = "CCBB123",
+//    NumberOfDoors = 5,
+//    Power = 140,
+//    Weight = 1500,
+//    ColorId = 2
+//}; //így ha kell az id. lehet az addasyncbe is tenni ezeket
 
-var peugeot208 = new VehicleEntity
-{
-    ChassisNumber = "asdfghjklq2345tr5",
-    EngineNumber = "de",
-    LicencePlate = "AAAA123",
-    NumberOfDoors = 5,
-    Power = 92,
-    Weight = 1000
-};
+//await dbContext.Vehicles.AddAsync(vehicle);
+//await dbContext.SaveChangesAsync();//változtatások elmentése
 
-await dbContext.Vehicles.AddAsync(peugeot208);
-await dbContext.SaveChangesAsync();
+//rekord módosítása, 
+//var vehicle = await dbContext.Vehicles.FindAsync((uint)1);
+//vehicle.ChassisNumber = "11111111111111111";
+
+//törlése
+//dbContext.Vehicles.Remove(vehicle);
+//await dbContext.SaveChangesAsync();
+
+//adatok kiolvasása
+var vehicles = await dbContext.Vehicles.Include(x => x.Color)
+                                       .ToListAsync();
+PrintVehiclesOnConsole(vehicles);
 
 Console.WriteLine("Done");
+
+void PrintVehiclesOnConsole(ICollection<VehicleEntity> vehicles)
+{
+    foreach (var vehicle in vehicles)
+    {
+        Console.WriteLine($"{vehicle.LicencePlate} ({vehicle.Color.Name})");
+    }
+}

@@ -30,4 +30,9 @@ public class VehicleEntity
 
     [Required]
     public uint Power { get; set; }
+
+    [ForeignKey("Color")]
+    public uint ColorId { get; set; }
+
+    public virtual ColorEntity Color { get; set; } //navigation property
 }

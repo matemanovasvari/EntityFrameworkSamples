@@ -36,6 +36,25 @@ public class ApplicationDbContext : DbContext
             Name = "black",
             Code = "000000"
         });
+
+        builder.Entity<ManufacturerEntity>().HasData(new ManufacturerEntity
+        {
+            Id = 1,
+            Name = "Honda"
+        });
+
+        builder.Entity<ManufacturerEntity>().HasData(new ManufacturerEntity
+        {
+            Id = 2,
+            Name = "Lamborgini"
+        });
+
+        builder.Entity<ModelEntity>().HasData(new ModelEntity
+        {
+            Id = 1,
+            ModelName = "Civic",
+            IntrouctionYear = 1972,
+        });
     }
 
 }

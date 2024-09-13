@@ -12,8 +12,19 @@
 //    ColorId = 2
 //}; //így ha kell az id. lehet az addasyncbe is tenni ezeket
 
-//await dbContext.Vehicles.AddAsync(vehicle);
-//await dbContext.SaveChangesAsync();//változtatások elmentése
+await dbContext.Vehicles.AddAsync(new VehicleEntity
+{
+    ChassisNumber = "12345678910asdfgh",
+    EngineNumber = "3F",
+    LicencePlate = "CCDD123",
+    NumberOfDoors = 5,
+    Power = 170,
+    Weight = 1400,
+    ColorId = 1,
+    ManufacturerId = 1,
+    ModelId = 1
+});
+await dbContext.SaveChangesAsync();//változtatások elmentése
 
 //rekord módosítása, 
 //var vehicle = await dbContext.Vehicles.FindAsync((uint)1);
@@ -24,8 +35,9 @@
 //await dbContext.SaveChangesAsync();
 
 //adatok kiolvasása
-var vehicles = await dbContext.Vehicles.Include(x => x.Color)
-                                       .ToListAsync();
+//var vehicles = await dbContext.Vehicles.Include(x => x.Color)
+//                                       .ToListAsync();
+var vehicles = await dbContext.Vehicles.ToListAsync();
 PrintVehiclesOnConsole(vehicles);
 
 Console.WriteLine("Done");

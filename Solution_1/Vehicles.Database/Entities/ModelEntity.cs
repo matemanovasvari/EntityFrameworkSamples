@@ -18,7 +18,5 @@ public class ModelEntity
     [ForeignKey("Manufacturer")]
     public uint ManufacturerId { get; set; }
 
-    public virtual ManufacturerEntity Manufacturer { get; set; }
-
     public virtual IReadOnlyCollection<VehicleEntity> Vehicles { get; set; }
 }

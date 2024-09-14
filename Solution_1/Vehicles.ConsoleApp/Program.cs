@@ -1,29 +1,20 @@
 ﻿using var dbContext = new ApplicationDbContext();
 
 //adat hozzáadása az adatbázishoz
-//var vehicle = new VehicleEntity
-//{
-//    ChassisNumber = "ioplghjklq2345tr5",
-//    EngineNumber = "df",
-//    LicencePlate = "CCBB123",
-//    NumberOfDoors = 5,
-//    Power = 140,
-//    Weight = 1500,
-//    ColorId = 2
-//}; //így ha kell az id. lehet az addasyncbe is tenni ezeket
-
-await dbContext.Vehicles.AddAsync(new VehicleEntity
+var vehicle = new VehicleEntity
 {
-    ChassisNumber = "12345678910asdfgh",
-    EngineNumber = "3F",
-    LicencePlate = "CCDD123",
+    ChassisNumber = "ioplghjklq2345tr5",
+    EngineNumber = "df",
+    LicencePlate = "CCEE123",
     NumberOfDoors = 5,
-    Power = 170,
-    Weight = 1400,
-    ColorId = 1,
+    Power = 140,
+    Weight = 1500,
+    ColorId = 2,
     ManufacturerId = 1,
     ModelId = 1
-});
+}; //így ha kell az id. lehet az addasyncbe is tenni ezeket
+
+await dbContext.Vehicles.AddAsync(vehicle);
 await dbContext.SaveChangesAsync();//változtatások elmentése
 
 //rekord módosítása, 
@@ -35,9 +26,9 @@ await dbContext.SaveChangesAsync();//változtatások elmentése
 //await dbContext.SaveChangesAsync();
 
 //adatok kiolvasása
-//var vehicles = await dbContext.Vehicles.Include(x => x.Color)
-//                                       .ToListAsync();
-var vehicles = await dbContext.Vehicles.ToListAsync();
+var vehicles = await dbContext.Vehicles.Include(x => x.Color)
+                                       .ToListAsync();
+//var vehicles = await dbContext.Vehicles.ToListAsync();
 PrintVehiclesOnConsole(vehicles);
 
 Console.WriteLine("Done");

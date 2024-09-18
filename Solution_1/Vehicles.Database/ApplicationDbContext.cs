@@ -3,7 +3,10 @@ namespace Vehicles.Database;
 
 public class ApplicationDbContext : DbContext
 {
+    public DbSet<ManufacturerEntity> Manufacturers { get; set; }
+    public DbSet<ModelEntity> Models { get; set; }
     public DbSet<VehicleEntity> Vehicles { get; set; }
+    public DbSet<ManufacturerEntity> Colors { get; set; }
 
     public ApplicationDbContext() : base()
     {
@@ -35,25 +38,6 @@ public class ApplicationDbContext : DbContext
             Id = 2,
             Name = "black",
             Code = "000000"
-        });
-
-        builder.Entity<ManufacturerEntity>().HasData(new ManufacturerEntity
-        {
-            Id = 1,
-            Name = "Honda"
-        });
-
-        builder.Entity<ManufacturerEntity>().HasData(new ManufacturerEntity
-        {
-            Id = 2,
-            Name = "Lamborgini"
-        });
-
-        builder.Entity<ModelEntity>().HasData(new ModelEntity
-        {
-            Id = 1,
-            ModelName = "Civic",
-            IntrouctionYear = 1972,
         });
     }
 

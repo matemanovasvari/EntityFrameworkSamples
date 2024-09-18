@@ -35,16 +35,10 @@ public class VehicleEntity
 
     [ForeignKey("Color")]
     public uint ColorId { get; set; }
-
-    [ForeignKey("Manufacturer")]
-    public uint ManufacturerId { get; set; }
-
-    [ForeignKey("Model")]
-    public uint ModelId { get; set; }
-
     public virtual ColorEntity Color { get; set; } //navigation property
 
-    public virtual ManufacturerEntity Manufacturer { get; set; }
+    [ForeignKey("Model")]
+    public uint ModelId { get; set; } 
 
     public virtual ModelEntity Model { get; set; }
 }

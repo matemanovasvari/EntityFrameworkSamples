@@ -12,7 +12,6 @@ public class ManufacturerEntity
     [StringLength(15)]
     public string Name { get; set; }
 
-    public virtual IReadOnlyCollection<VehicleEntity> Vehicles { get; set; }
 
     public virtual IReadOnlyCollection<ModelEntity> Models { get; set; }
 }

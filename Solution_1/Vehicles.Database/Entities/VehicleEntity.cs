@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
-
-namespace Vehicles.Database.Entities;
+﻿namespace Vehicles.Database.Entities;
 
 [Table("Vehicle")] //tábla neve
 [Index(nameof(LicencePlate), IsUnique = true)]

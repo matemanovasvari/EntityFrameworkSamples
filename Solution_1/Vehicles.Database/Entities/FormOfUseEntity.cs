@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Vehicles.Database.Entities;
+﻿namespace Vehicles.Database.Entities;
 
 [Table("FormOfUse")]
 [Index(nameof(Name), IsUnique = true)]

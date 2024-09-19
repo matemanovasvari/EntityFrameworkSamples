@@ -18,6 +18,7 @@ public class ApplicationDbContext : DbContext
         base.OnConfiguring(optionsBuilder);
 
         optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=VehicleDB;Trusted_Connection=True;MultipleActiveResultSets=True;TrustServerCertificate=True;");
+            //.LogTo(Console.WriteLine);
     }
 
     protected override void OnModelCreating(ModelBuilder builder)

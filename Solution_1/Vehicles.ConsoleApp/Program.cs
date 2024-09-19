@@ -32,10 +32,22 @@
 
 //Console.WriteLine("Done");
 
-await AddFirstVehicleToDBAsync();
+//await AddFirstVehicleToDBAsync();
+//await AddSecondVehicleToDB();
+//var vehicles = await dbContext.Vehicles.Include(vehicle => vehicle.Color)
+//                                       .Include(vehicle => vehicle.Model)
+//                                        .ThenInclude(model => model.Manufacturer)
+//                                       .ToListAsync();//listába tevés, előtte nincs tényleges adat csak egy query
 
+//PrintVehiclesOnConsole(vehicles);
 
+var vehicle = await dbContext.Vehicles.Include(vehicle => vehicle.Color)
+                                       .Include(vehicle => vehicle.Model)
+                                        .ThenInclude(model => model.Manufacturer)
+                                       .FirstAsync(x => x.Id == 1);
+PrintVehicleOnConsole(vehicle);
 
+Console.WriteLine("Done");
 
 async Task AddFirstVehicleToDBAsync()
 {
@@ -72,10 +84,49 @@ async Task AddFirstVehicleToDBAsync()
     await dbContext.SaveChangesAsync();
 }
 
+async Task AddSecondVehicleToDB()
+{
+    VehicleEntity vehicle = new VehicleEntity
+    {
+        ChassisNumber = "asdffejklqwertzui",
+        EngineNumber = "AF",
+        LicencePlate = "AACC678",
+        NumberOfDoors = 5,
+        Power = 86,
+        Weight = 990,
+        Color = new ColorEntity
+        {
+            Name = "red",
+            Code = "ff0000"
+        },
+        Model = new ModelEntity
+        {
+            ModelName = "Civic",
+            Manufacturer = new ManufacturerEntity
+            {
+                Name = "Honda"
+            }
+        }
+    };
+
+    await dbContext.Vehicles.AddAsync(vehicle);
+    await dbContext.SaveChangesAsync();
+}
+
 void PrintVehiclesOnConsole(ICollection<VehicleEntity> vehicles)
 {
     foreach (var vehicle in vehicles)
     {
-        Console.WriteLine($"{vehicle.LicencePlate} ({vehicle.Color.Name})");
+        PrintVehicleOnConsole(vehicle);
     }
+}
+
+void PrintVehicleOnConsole(VehicleEntity vehicle)
+{
+    Console.WriteLine(
+        $"{vehicle?.LicencePlate} " +
+        $"{vehicle?.Model?.Manufacturer?.Name} " +
+        $"{vehicle?.Model?.ModelName} " +
+        $"({vehicle?.Color?.Name})"
+        );
 }

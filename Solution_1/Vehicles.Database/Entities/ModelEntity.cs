@@ -12,9 +12,6 @@ public class ModelEntity
     [StringLength(20)]
     public string ModelName { get; set; }
 
-    [Required]
-    public uint IntrouctionYear { get; set; }
-
     [ForeignKey("Manufacturer")]
     public uint ManufacturerId { get; set; }
 

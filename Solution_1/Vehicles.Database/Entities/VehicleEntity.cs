@@ -41,4 +41,9 @@ public class VehicleEntity
     public uint ModelId { get; set; } 
 
     public virtual ModelEntity Model { get; set; }
+
+    [ForeignKey("FormOfUse")]
+    public uint FormOfUseId { get; set; }
+
+    public virtual FormOfUseEntity FormOfUse { get; set; }
 }

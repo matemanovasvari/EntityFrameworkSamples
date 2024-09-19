@@ -8,6 +8,8 @@ public class ApplicationDbContext : DbContext
     public DbSet<VehicleEntity> Vehicles { get; set; }
     public DbSet<ManufacturerEntity> Colors { get; set; }
 
+    public DbSet<FormOfUseEntity> FormOfUse { get; set; }
+
     public ApplicationDbContext() : base()
     {
        
@@ -39,6 +41,18 @@ public class ApplicationDbContext : DbContext
             Id = 2,
             Name = "black",
             Code = "000000"
+        });
+
+        builder.Entity<FormOfUseEntity>().HasData(new FormOfUseEntity
+        {
+            Id = 1,
+            Name = "Taxi"
+        });
+
+        builder.Entity<FormOfUseEntity>().HasData(new FormOfUseEntity
+        {
+            Id = 2,
+            Name = "Transport"
         });
     }
 

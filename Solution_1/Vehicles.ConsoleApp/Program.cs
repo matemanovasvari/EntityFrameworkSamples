@@ -41,31 +41,41 @@
 
 //PrintVehiclesOnConsole(vehicles);
 
-var vehicle = await dbContext.Vehicles.Include(vehicle => vehicle.Color)
-                                       .Include(vehicle => vehicle.Model)
-                                        .ThenInclude(model => model.Manufacturer)
-                                       .FirstAsync(x => x.Id == 1);
-PrintVehicleOnConsole(vehicle);
+//var vehicle = await dbContext.Vehicles.Include(vehicle => vehicle.Color)
+//                                       .Include(vehicle => vehicle.Model)
+//                                        .ThenInclude(model => model.Manufacturer)
+//                                       .FirstAsync(x => x.Id == 1);
+//PrintVehicleOnConsole(vehicle);
+
+
+//await AddSecondVehicleToDB();
+
+var vehicles = await dbContext.Vehicles.Include(vehicle => vehicle.Color)
+                                      .Include(vehicle => vehicle.FormOfUse)
+                                      .Include(vehicle => vehicle.Model)
+                                      .ThenInclude(model => model.Manufacturer)
+                                      .ToListAsync();
+PrintVehiclesOnConsole(vehicles);
 
 Console.WriteLine("Done");
 
 async Task AddFirstVehicleToDBAsync()
 {
-    ManufacturerEntity mazda = new ManufacturerEntity
+    ManufacturerEntity manufacturer = new ManufacturerEntity
     {
         Name = "Mazda"
     };
 
-    await dbContext.Manufacturers.AddAsync(mazda);
+    await dbContext.Manufacturers.AddAsync(manufacturer);
     await dbContext.SaveChangesAsync();
 
-    ModelEntity mazda2de = new ModelEntity
+    ModelEntity model = new ModelEntity
     {
         ModelName = "2 DE",
-        ManufacturerId = mazda.Id,
+        ManufacturerId = manufacturer.Id,
     };
 
-    await dbContext.Models.AddAsync(mazda2de);
+    await dbContext.Models.AddAsync(model);
     await dbContext.SaveChangesAsync();
 
     VehicleEntity vehicle = new VehicleEntity
@@ -77,7 +87,8 @@ async Task AddFirstVehicleToDBAsync()
         ModelId = 1,
         NumberOfDoors = 5,
         Power = 86,
-        Weight = 990
+        Weight = 990,
+        FormOfUseId = 1
     };
 
     await dbContext.Vehicles.AddAsync(vehicle);
@@ -88,24 +99,28 @@ async Task AddSecondVehicleToDB()
 {
     VehicleEntity vehicle = new VehicleEntity
     {
-        ChassisNumber = "asdffejklqwertzui",
-        EngineNumber = "AF",
-        LicencePlate = "AACC678",
+        ChassisNumber = "123456789asdfghjk",
+        EngineNumber = "AQ",
+        LicencePlate = "AASS123",
         NumberOfDoors = 5,
-        Power = 86,
-        Weight = 990,
+        Power = 150,
+        Weight = 1200,
         Color = new ColorEntity
         {
-            Name = "red",
-            Code = "ff0000"
+            Name = "blue",
+            Code = "0000ff"
         },
         Model = new ModelEntity
         {
-            ModelName = "Civic",
+            ModelName = "S Long Range",
             Manufacturer = new ManufacturerEntity
             {
-                Name = "Honda"
+                Name = "Tesla"
             }
+        },
+        FormOfUse = new FormOfUseEntity
+        {
+            Name = "Personal"
         }
     };
 
@@ -127,6 +142,7 @@ void PrintVehicleOnConsole(VehicleEntity vehicle)
         $"{vehicle?.LicencePlate} " +
         $"{vehicle?.Model?.Manufacturer?.Name} " +
         $"{vehicle?.Model?.ModelName} " +
-        $"({vehicle?.Color?.Name})"
+        $"({vehicle?.Color?.Name})" +
+        $"{vehicle?.FormOfUse?.Name}"
         );
 }

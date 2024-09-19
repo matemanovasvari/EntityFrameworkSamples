@@ -1,6 +1,3 @@
-gépjármű
-Manufacturer tábla hozzáadása
-Model tábla is
-vehicle -> manufacturer: N-1
-vehicle -> model: N-1
-manufacturer -> model: 1-N
+új tábla 
+Jármű foglalkozása/felhasználási típus, terület
+id, név

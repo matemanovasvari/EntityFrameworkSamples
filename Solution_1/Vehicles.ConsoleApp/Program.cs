@@ -47,14 +47,15 @@
 //                                       .FirstAsync(x => x.Id == 1);
 //PrintVehicleOnConsole(vehicle);
 
-
-//await AddSecondVehicleToDB();
+await AddFirstVehicleToDBAsync();
+await AddSecondVehicleToDB();
 
 var vehicles = await dbContext.Vehicles.Include(vehicle => vehicle.Color)
                                       .Include(vehicle => vehicle.FormOfUse)
                                       .Include(vehicle => vehicle.Model)
                                       .ThenInclude(model => model.Manufacturer)
                                       .ToListAsync();
+
 PrintVehiclesOnConsole(vehicles);
 
 Console.WriteLine("Done");

@@ -40,7 +40,7 @@ public class VehicleEntity
 
     public virtual ModelEntity Model { get; set; }
 
-    [ForeignKey("FormOfUse")]
+    //[ForeignKey("FormOfUse")]
     public uint FormOfUseId { get; set; }
 
     public virtual FormOfUseEntity FormOfUse { get; set; }

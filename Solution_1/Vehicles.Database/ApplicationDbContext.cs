@@ -10,6 +10,8 @@ public class ApplicationDbContext : DbContext
 
     public DbSet<FormOfUseEntity> FormOfUse { get; set; }
 
+    public DbSet<TypeEntity> Types { get; set; }
+
     public ApplicationDbContext() : base()
     {
        
@@ -43,17 +45,16 @@ public class ApplicationDbContext : DbContext
             Code = "000000"
         });
 
-        builder.Entity<FormOfUseEntity>().HasData(new FormOfUseEntity
-        {
-            Id = 1,
-            Name = "Taxi"
-        });
+        builder.Entity<FormOfUseEntity>().HasData(
+            new FormOfUseEntity{ Id = 1, Name = "Taxi"},
+            new FormOfUseEntity { Id = 2, Name = "Transport"}
+        );
 
-        builder.Entity<FormOfUseEntity>().HasData(new FormOfUseEntity
-        {
-            Id = 2,
-            Name = "Transport"
-        });
+        builder.Entity<TypeEntity>().HasData(
+            new TypeEntity{ Id = 1, Name = "Bus"},
+            new TypeEntity { Id = 2, Name = "Truck"},
+            new TypeEntity { Id = 3, Name = "Motorcycle"},
+            new TypeEntity { Id = 4, Name = "Car" }
+        );
     }
-
 }

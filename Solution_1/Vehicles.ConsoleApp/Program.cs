@@ -47,7 +47,7 @@
 //                                       .FirstAsync(x => x.Id == 1);
 //PrintVehicleOnConsole(vehicle);
 
-await AddFirstVehicleToDBAsync();
+//await AddFirstVehicleToDBAsync();
 await AddSecondVehicleToDB();
 
 var vehicles = await dbContext.Vehicles.Include(vehicle => vehicle.Color)
@@ -100,29 +100,23 @@ async Task AddSecondVehicleToDB()
 {
     VehicleEntity vehicle = new VehicleEntity
     {
-        ChassisNumber = "123456789asdfghjk",
-        EngineNumber = "AQ",
-        LicencePlate = "AASS123",
-        NumberOfDoors = 5,
-        Power = 150,
-        Weight = 1200,
-        Color = new ColorEntity
-        {
-            Name = "blue",
-            Code = "0000ff"
-        },
+        ChassisNumber = "123456789asdfgerd",
+        EngineNumber = "WE",
+        LicencePlate = "KKLL123",
+        NumberOfDoors = 2,
+        Power = 1500,
+        Weight = 4000,
+        ColorId = 3,
         Model = new ModelEntity
         {
-            ModelName = "S Long Range",
+            ModelName = "260 Harmonika",
             Manufacturer = new ManufacturerEntity
             {
-                Name = "Tesla"
+                Name = "Ikarus"
             }
         },
-        FormOfUse = new FormOfUseEntity
-        {
-            Name = "Personal"
-        }
+        FormOfUseId = 2,
+        TypeId = 1
     };
 
     await dbContext.Vehicles.AddAsync(vehicle);

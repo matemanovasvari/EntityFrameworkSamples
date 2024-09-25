@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Vehicles.Database;
 
@@ -10,9 +11,11 @@ using Vehicles.Database;
 namespace Vehicles.Database.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240925065002_Type")]
+    partial class Type
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,7 +47,7 @@ namespace Vehicles.Database.Migrations
                     b.HasIndex("Name", "Code")
                         .IsUnique();
 
-                    b.ToTable("Color", (string)null);
+                    b.ToTable("Color");
 
                     b.HasData(
                         new
@@ -78,7 +81,7 @@ namespace Vehicles.Database.Migrations
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("FormOfUse", (string)null);
+                    b.ToTable("FormOfUse");
 
                     b.HasData(
                         new
@@ -111,7 +114,7 @@ namespace Vehicles.Database.Migrations
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("Manufacturer", (string)null);
+                    b.ToTable("Manufacturer");
                 });
 
             modelBuilder.Entity("Vehicles.Database.Entities.ModelEntity", b =>
@@ -137,7 +140,7 @@ namespace Vehicles.Database.Migrations
                     b.HasIndex("ModelName")
                         .IsUnique();
 
-                    b.ToTable("Model", (string)null);
+                    b.ToTable("Model");
                 });
 
             modelBuilder.Entity("Vehicles.Database.Entities.TypeEntity", b =>
@@ -158,7 +161,7 @@ namespace Vehicles.Database.Migrations
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("Type", (string)null);
+                    b.ToTable("Type");
 
                     b.HasData(
                         new
@@ -240,7 +243,7 @@ namespace Vehicles.Database.Migrations
 
                     b.HasIndex("TypeId");
 
-                    b.ToTable("Vehicle", (string)null);
+                    b.ToTable("Vehicle");
                 });
 
             modelBuilder.Entity("Vehicles.Database.Entities.ModelEntity", b =>

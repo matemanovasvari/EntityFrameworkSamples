@@ -44,4 +44,8 @@ public class VehicleEntity
     public uint FormOfUseId { get; set; }
 
     public virtual FormOfUseEntity FormOfUse { get; set; }
+
+    public uint TypeId { get; set; }
+
+    public virtual TypeEntity Type { get; set; }
 }

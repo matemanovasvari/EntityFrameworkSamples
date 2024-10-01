@@ -4,18 +4,18 @@ namespace Vehicles.Database;
 public class ApplicationDbContext : DbContext
 {
     public DbSet<ManufacturerEntity> Manufacturers { get; set; }
+
     public DbSet<ModelEntity> Models { get; set; }
     public DbSet<VehicleEntity> Vehicles { get; set; }
-    public DbSet<ManufacturerEntity> Colors { get; set; }
+    public DbSet<ColorEntity> Colors { get; set; }
+    public DbSet<OwnerEntity> Owners { get; set; }
+    public DbSet<StreetEntity> Streets { get; set; }
+    public DbSet<CityEntity> Cities { get; set; }
 
-    public DbSet<FormOfUseEntity> FormOfUse { get; set; }
-
+    public DbSet<FormOfUseEntity> FormofUses { get; set; }
     public DbSet<TypeEntity> Types { get; set; }
-
     public ApplicationDbContext() : base()
-    {
-       
-    }
+    { }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

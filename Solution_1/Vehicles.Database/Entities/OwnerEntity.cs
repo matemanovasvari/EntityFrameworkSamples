@@ -20,7 +20,7 @@ public class OwnerEntity
     [StringLength(20)]
     public string TAJ { get; set; }
 
-    IReadOnlyCollection<VehicleEntity> Vehicles { get; set; }
+    public IReadOnlyCollection<VehicleEntity> Vehicles { get; set; }
 
     public uint StreetId { get; set; }
 

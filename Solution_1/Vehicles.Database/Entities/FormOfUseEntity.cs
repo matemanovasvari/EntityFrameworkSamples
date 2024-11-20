@@ -12,5 +12,5 @@ public class FormOfUseEntity
     [Required]
     public string Name { get; set; }
 
-    public virtual IReadOnlyCollection<VehicleEntity> Vehicles { get; set; }
+    public IReadOnlyCollection<VehicleEntity> Vehicles { get; set; }
 }

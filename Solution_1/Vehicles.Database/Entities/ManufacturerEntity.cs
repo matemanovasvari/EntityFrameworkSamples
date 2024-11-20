@@ -13,5 +13,5 @@ public class ManufacturerEntity
     public string Name { get; set; }
 
 
-    public virtual IReadOnlyCollection<ModelEntity> Models { get; set; }
+    public IReadOnlyCollection<ModelEntity> Models { get; set; }
 }

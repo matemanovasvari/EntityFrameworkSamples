@@ -12,5 +12,5 @@ public class StreetEntity
     public uint CityId { get; set; }
     public virtual CityEntity City { get; set; }
 
-    public IReadOnlyCollection<OwnerEntity> owners { get; set; }
+    public IReadOnlyCollection<OwnerEntity> Owners { get; set; }
 }

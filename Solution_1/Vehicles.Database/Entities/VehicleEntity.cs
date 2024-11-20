@@ -1,12 +1,11 @@
 ﻿namespace Vehicles.Database.Entities;
 
-[Table("Vehicle")] //tábla neve
+[Table("Vehicle")] //tábla név
 [Index(nameof(LicencePlate), IsUnique = true)]
-
 public class VehicleEntity
 {
-    [Key] //primary key
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)] //auto increment
+    [Key]//elsődleges kulcs
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]//autoincrement
     public uint Id { get; set; }
 
     [Required]
@@ -33,19 +32,20 @@ public class VehicleEntity
 
     [ForeignKey("Color")]
     public uint ColorId { get; set; }
+
     public virtual ColorEntity Color { get; set; } //navigation property
 
     [ForeignKey("Model")]
-    public uint ModelId { get; set; } 
-
+    public uint ModelId { get; set; }
     public virtual ModelEntity Model { get; set; }
 
-    //[ForeignKey("FormOfUse")]
     public uint FormOfUseId { get; set; }
-
-    public virtual FormOfUseEntity FormOfUse { get; set; }
+    public virtual FormOfUseEntity FieldOfUse { get; set; }
 
     public uint TypeId { get; set; }
 
     public virtual TypeEntity Type { get; set; }
+
+    public uint OwnerId { get; set; }
+    public virtual OwnerEntity Owner { get; set; }
 }

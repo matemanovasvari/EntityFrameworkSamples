@@ -12,5 +12,5 @@ public class TypeEntity
     [StringLength(20)]
     public string Name { get; set; }
 
-    public virtual IReadOnlyCollection<VehicleEntity> VehicleEntities { get; set; }
+    public virtual IReadOnlyCollection<VehicleEntity> Vehicles { get; set; }
 }

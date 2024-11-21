@@ -1,0 +1,14 @@
+C:\Users\user\Desktop\IKT-2025-01-08\Kreta\Kreta.Database\bin\Debug\net8.0\Kreta.Database.deps.json
+C:\Users\user\Desktop\IKT-2025-01-08\Kreta\Kreta.Database\bin\Debug\net8.0\Kreta.Database.runtimeconfig.json
+C:\Users\user\Desktop\IKT-2025-01-08\Kreta\Kreta.Database\bin\Debug\net8.0\Kreta.Database.dll
+C:\Users\user\Desktop\IKT-2025-01-08\Kreta\Kreta.Database\bin\Debug\net8.0\Kreta.Database.pdb
+C:\Users\user\Desktop\IKT-2025-01-08\Kreta\Kreta.Database\obj\Debug\net8.0\Kreta.Database.csproj.AssemblyReference.cache
+C:\Users\user\Desktop\IKT-2025-01-08\Kreta\Kreta.Database\obj\Debug\net8.0\Kreta.Database.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\Desktop\IKT-2025-01-08\Kreta\Kreta.Database\obj\Debug\net8.0\Kreta.Database.AssemblyInfoInputs.cache
+C:\Users\user\Desktop\IKT-2025-01-08\Kreta\Kreta.Database\obj\Debug\net8.0\Kreta.Database.AssemblyInfo.cs
+C:\Users\user\Desktop\IKT-2025-01-08\Kreta\Kreta.Database\obj\Debug\net8.0\Kreta.Database.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\IKT-2025-01-08\Kreta\Kreta.Database\obj\Debug\net8.0\Kreta.Database.dll
+C:\Users\user\Desktop\IKT-2025-01-08\Kreta\Kreta.Database\obj\Debug\net8.0\refint\Kreta.Database.dll
+C:\Users\user\Desktop\IKT-2025-01-08\Kreta\Kreta.Database\obj\Debug\net8.0\Kreta.Database.pdb
+C:\Users\user\Desktop\IKT-2025-01-08\Kreta\Kreta.Database\obj\Debug\net8.0\Kreta.Database.genruntimeconfig.cache
+C:\Users\user\Desktop\IKT-2025-01-08\Kreta\Kreta.Database\obj\Debug\net8.0\ref\Kreta.Database.dll

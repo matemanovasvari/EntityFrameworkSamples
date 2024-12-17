@@ -1,5 +1,6 @@
 ﻿using Kreta.Database;
 using Kreta.Database.Entities;
+using System.Reflection.Emit;
 
 namespace Kreta.ConsoleApp;
 
@@ -37,7 +38,10 @@ public static class KretaApp
                     await Menu();
                     break;
                 case "2":
-                    //await AddSubject(context);
+                    await OperationFunctions.AddSubject(context);
+                    Console.WriteLine("Subject added succesfully!");
+                    Thread.Sleep(1500);
+                    await Menu();
                     break;
                 case "3":
                     //await AddGrade(context);
@@ -46,7 +50,9 @@ public static class KretaApp
                     //await ModifyStudent(context);
                     break;
                 case "5":
-                    //await ViewStudentsAndGrades(context);
+                    await OperationFunctions.ViewStudents(context);
+                    Console.WriteLine("Press Enter to continue.");
+                    Console.ReadLine();
                     break;
                 case "e":
                     Console.Clear();

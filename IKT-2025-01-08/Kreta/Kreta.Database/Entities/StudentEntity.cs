@@ -16,7 +16,7 @@ public class StudentEntity
     [Required]
     public string MothersName { get; set; }
 
-    public uint AddressId { get; set; }
+    public uint? AddressId { get; set; }
     public virtual AddressEntity Address { get; set; }
 
     public virtual ICollection<SubjectEntity> Subjects { get; set; }

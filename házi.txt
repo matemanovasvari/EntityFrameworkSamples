@@ -1,0 +1,3 @@
+új tábla 
+Jármű foglalkozása/felhasználási típus, terület
+id, név
